@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity   {
     }
 
     public void clearAll (View v){
+        memory=0;
         TextView textView = findViewById(R.id.display);
         textView.setText("");
         theIsADot=false;
@@ -64,49 +65,53 @@ public class MainActivity extends AppCompatActivity   {
     public void sum(View v) {
         TextView textView = findViewById(R.id.display);
         try {
-            memory = Double.valueOf(textView.getText().toString());
+            memory += Double.valueOf(textView.getText().toString());
             textView.setText("");
             operation = 0;
             theIsADot=false;
         }
         catch (Throwable e){
             e.printStackTrace();
+            memory=0;
         }
     }
     public void subs(View v) {
         TextView textView = findViewById(R.id.display);
         try{
-            memory = Double.valueOf(textView.getText().toString());
+            memory += Double.valueOf(textView.getText().toString());
             textView.setText("");
             operation = 1;
             theIsADot=false;
         }
         catch (Throwable e){
             e.printStackTrace();
+            memory=0;
         }
     }
     public void mult(View v) {
         TextView textView = findViewById(R.id.display);
         try{
-            memory = Double.valueOf(textView.getText().toString());
+            memory += Double.valueOf(textView.getText().toString());
             textView.setText("");
             operation = 2;
             theIsADot=false;
         }
         catch (Throwable e){
             e.printStackTrace();
+            memory=0;
         }
     }
     public void div(View v) {
         TextView textView = findViewById(R.id.display);
         try {
-            memory = Double.valueOf(textView.getText().toString());
+            memory += Double.valueOf(textView.getText().toString());
             textView.setText("");
             operation = 3;
             theIsADot=false;
         }
         catch (Throwable e){
             e.printStackTrace();
+            memory=0;
         }
     }
 
@@ -116,13 +121,18 @@ public class MainActivity extends AppCompatActivity   {
             double actual = Double.valueOf(textView.getText().toString());
             if (operation == 0) {
                 textView.setText(String.valueOf(memory + actual));
+                memory=memory+actual;
             } else if (operation == 1) {
                 textView.setText(String.valueOf(memory - actual));
+                memory=memory-actual;
             } else if (operation == 2) {
                 textView.setText(String.valueOf(memory * actual));
+                memory=memory*actual;
             } else {
                 textView.setText(String.valueOf(memory / actual));
+                memory=memory/actual;
             }
+
         }
         catch (Throwable e){
             e.printStackTrace();
@@ -142,9 +152,11 @@ public class MainActivity extends AppCompatActivity   {
                 num = Math.sin(Math.toRadians(Double.valueOf(textView.getText().toString())));
             }
             textView.setText(String.valueOf(num));
+            memory=num;
         }
         catch (Throwable e){
             e.printStackTrace();
+            memory=0;
         }
     }
     public void cos (View v){
@@ -160,9 +172,11 @@ public class MainActivity extends AppCompatActivity   {
                 num = Math.cos(Math.toRadians(Double.valueOf(textView.getText().toString())));
             }
             textView.setText(String.valueOf(num));
+            memory=num;
         }
         catch (Throwable e){
             e.printStackTrace();
+            memory=0;
         }
     }
     public void tan (View v){
@@ -178,9 +192,11 @@ public class MainActivity extends AppCompatActivity   {
                 num = Math.tan(Math.toRadians(Double.valueOf(textView.getText().toString())));
             }
             textView.setText(String.valueOf(num));
+            memory=num;
         }
         catch (Throwable e){
             e.printStackTrace();
+            memory=0;
         }
     }
 }
